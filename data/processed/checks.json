@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Airport traffic: continuous months",
+    "passed": true,
+    "detail": "210 months 2009-01 to 2026-06"
+  },
+  {
+    "name": "Airport traffic: no duplicate month",
+    "passed": true,
+    "detail": "none"
+  },
+  {
+    "name": "Airport traffic: no missing values",
+    "passed": true,
+    "detail": "none"
+  },
+  {
+    "name": "Airport traffic: no negative values",
+    "passed": true,
+    "detail": "none"
+  },
+  {
+    "name": "Airport traffic: domestic + international = total",
+    "passed": true,
+    "detail": "all 210 months"
+  },
+  {
+    "name": "Airport traffic: latest month matches the file's report period",
+    "passed": true,
+    "detail": "data 2026-06, the file's report period 2026-06"
+  },
+  {
+    "name": "Airport traffic: latest month matches the BITRE page link",
+    "passed": true,
+    "detail": "data 2026-06, the BITRE page link 2026-06"
+  },
+  {
+    "name": "Domestic routes: no duplicate route/month",
+    "passed": true,
+    "detail": "none"
+  },
+  {
+    "name": "Domestic routes: no negative values",
+    "passed": true,
+    "detail": "none"
+  },
+  {
+    "name": "Domestic routes: load_factor_pct between 0 and 100",
+    "passed": true,
+    "detail": "ok"
+  },
+  {
+    "name": "Domestic routes: latest month matches the file name",
+    "passed": true,
+    "detail": "data 2026-07, the file name 2026-07"
+  },
+  {
+    "name": "International seats (from 2023-01): continuous months",
+    "passed": true,
+    "detail": "43 months 2023-01 to 2026-07"
+  },
+  {
+    "name": "International seats (from 2023-01): no missing values",
+    "passed": true,
+    "detail": "none"
+  },
+  {
+    "name": "International seats: no duplicate month",
+    "passed": true,
+    "detail": "none"
+  },
+  {
+    "name": "International seats: no negative values",
+    "passed": true,
+    "detail": "none"
+  },
+  {
+    "name": "International seats: latest month matches the file name",
+    "passed": true,
+    "detail": "data 2026-07, the file name 2026-07"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "airport_traffic": {
+    "bytes": 872791,
+    "file_name": "Aviation-Airport Traffic Data-June 2026.xlsx",
+    "file_url": "https://www.bitre.gov.au/sites/default/files/documents/Aviation-Airport%20Traffic%20Data-June%202026.xlsx",
+    "label_month": "2026-06",
+    "last_checked_at": "2026-10-27T07:58:32+00:00",
+    "page_url": "https://www.bitre.gov.au/resource/aviation/airport-traffic-data",
+    "raw_file_in_git": true,
+    "retrieved_at": "2026-10-27T07:58:32+00:00",
+    "sha256": "9a5ec82c1685e0f434dcbdec66047b1c0049de014984ff2d54091384d6d92632",
+    "title": "Airport traffic data: monthly, top 20 airports"
+  },
+  "domestic_routes": {
+    "bytes": 1712650,
+    "file_name": "toproutesjuly2014july2026.xlsx",
+    "file_url": "https://www.bitre.gov.au/sites/default/files/documents/toproutesjuly2014july2026.xlsx",
+    "label_month": "2026-07",
+    "last_checked_at": "2026-10-27T07:58:32+00:00",
+    "page_url": "https://www.bitre.gov.au/resource/aviation/australian-domestic-aviation-activity-time-series",
+    "raw_file_in_git": true,
+    "retrieved_at": "2026-10-27T07:58:32+00:00",
+    "sha256": "2bb013e3a1d8b427a54193bcb86025440c4cbae9ea90bc102b0f52974a9a0f66",
+    "title": "Australian domestic aviation activity: top routes"
+  },
+  "international_seats": {
+    "bytes": 16162632,
+    "file_name": "International_airline_activity_OpFltsSeats_0726_Tables.xlsx",
+    "file_url": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_OpFltsSeats_0726_Tables.xlsx",
+    "label_month": "2026-07",
+    "last_checked_at": "2026-10-27T07:58:32+00:00",
+    "page_url": "https://www.bitre.gov.au/resource/aviation/international-airline-activity-time-series-data",
+    "raw_file_in_git": false,
+    "retrieved_at": "2026-10-27T07:58:32+00:00",
+    "sha256": "9e8d6e73e42ebcf4e7b06d29eebac6505d5aa02a9e52e247ccb55755294abd7f",
+    "title": "International airline activity: operated flights and seats"
+  }
+}

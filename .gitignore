@@ -1,0 +1,29 @@
+# Local working notes (not published)
+CLAUDE.md
+AGENTS.md
+PLAN.md
+DEMO.md
+.claude/
+*.local.md
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+.env.*
+
+# Large raw download: only its SHA-256 (data/raw/manifest.json) and extracted rows are kept
+data/raw/International_airline_activity_OpFltsSeats_*_Tables.xlsx
