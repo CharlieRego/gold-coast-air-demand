@@ -1,0 +1,1024 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-10-31T17:43:42+00:00",
+  "run_date": "2026-11-01",
+  "unit": "passenger movements (arrivals plus departures), scheduled flights only",
+  "latest_data_month": "2026-06",
+  "headline": {
+    "period_start": "2026-11",
+    "period_end": "2027-04",
+    "months_ahead_of_data": [
+      5,
+      10
+    ],
+    "previous_period_start": "2025-11",
+    "previous_period_end": "2026-04",
+    "total": {
+      "forecast": 3198368,
+      "low": 2940072,
+      "high": 3456663,
+      "previous_actual": 3292034,
+      "change_pct": -2.8
+    },
+    "domestic": {
+      "forecast": 2849672,
+      "low": 2691141,
+      "high": 3008202,
+      "previous_actual": 2911477,
+      "change_pct": -2.1
+    },
+    "international": {
+      "forecast": 348696,
+      "low": 248730,
+      "high": 448662,
+      "previous_actual": 380557,
+      "change_pct": -8.4
+    },
+    "sentence": "Gold Coast Airport is on track for about 3.2 million passenger arrivals and departures from November 2026 to April 2027, 3% fewer than the same months a year earlier, with international passengers down about 8%.",
+    "caution": "Over the last 12 months this method came in below the real number in about 8 of every 10 test forecasts, by 4% on average, so treat it as a cautious estimate."
+  },
+  "early_indicators": [
+    {
+      "month": "2026-07",
+      "measure": "passengers on Gold Coast's reported domestic routes",
+      "routes": [
+        "OOL-ADL",
+        "OOL-CBR",
+        "OOL-MEL",
+        "OOL-SYD"
+      ],
+      "value": 463098,
+      "previous_year": 461329,
+      "change_pct": 0.4,
+      "source": "domestic_routes"
+    },
+    {
+      "month": "2026-07",
+      "measure": "seats on international flights to and from Gold Coast",
+      "routes": [],
+      "value": 93771,
+      "previous_year": 82552,
+      "change_pct": 13.6,
+      "source": "international_seats"
+    }
+  ],
+  "model": {
+    "name": "ETS/SARIMA selection by backtest; chosen: domestic: ets_recent, international: ets_recent",
+    "per_series": {
+      "domestic": {
+        "candidate": "ets_recent",
+        "description": "exponential smoothing (ETS) with a damped trend and a monthly seasonal pattern, on log passengers, trained on July 2022 onward (after COVID recovery)"
+      },
+      "international": {
+        "candidate": "ets_recent",
+        "description": "exponential smoothing (ETS) with a damped trend and a monthly seasonal pattern, on log passengers, trained on July 2022 onward (after COVID recovery)"
+      }
+    },
+    "total": "domestic forecast + international forecast",
+    "likely_range": "forecast ± the % error that 80 in 100 backtest forecasts at a similar distance ahead stayed within",
+    "likely_range_pct": {
+      "domestic": {
+        "1-3": 5.6,
+        "4-6": 5.6,
+        "7-9": 5.7,
+        "10-12": 5.1
+      },
+      "international": {
+        "1-3": 17.9,
+        "4-6": 27.2,
+        "7-9": 30.1,
+        "10-12": 27.6
+      },
+      "total": {
+        "1-3": 6.2,
+        "4-6": 7.6,
+        "7-9": 8.6,
+        "10-12": 7.5
+      }
+    },
+    "baseline": "same month last year"
+  },
+  "history": [
+    {
+      "month": "2019-01",
+      "domestic": 542174,
+      "international": 95623,
+      "total": 637797
+    },
+    {
+      "month": "2019-02",
+      "domestic": 388248,
+      "international": 70223,
+      "total": 458471
+    },
+    {
+      "month": "2019-03",
+      "domestic": 425543,
+      "international": 73787,
+      "total": 499330
+    },
+    {
+      "month": "2019-04",
+      "domestic": 479577,
+      "international": 81121,
+      "total": 560698
+    },
+    {
+      "month": "2019-05",
+      "domestic": 405910,
+      "international": 65059,
+      "total": 470969
+    },
+    {
+      "month": "2019-06",
+      "domestic": 401252,
+      "international": 71851,
+      "total": 473103
+    },
+    {
+      "month": "2019-07",
+      "domestic": 496534,
+      "international": 85815,
+      "total": 582349
+    },
+    {
+      "month": "2019-08",
+      "domestic": 448295,
+      "international": 77840,
+      "total": 526135
+    },
+    {
+      "month": "2019-09",
+      "domestic": 472200,
+      "international": 74017,
+      "total": 546217
+    },
+    {
+      "month": "2019-10",
+      "domestic": 520812,
+      "international": 77251,
+      "total": 598063
+    },
+    {
+      "month": "2019-11",
+      "domestic": 456721,
+      "international": 70105,
+      "total": 526826
+    },
+    {
+      "month": "2019-12",
+      "domestic": 506342,
+      "international": 98303,
+      "total": 604645
+    },
+    {
+      "month": "2020-01",
+      "domestic": 538594,
+      "international": 99350,
+      "total": 637944
+    },
+    {
+      "month": "2020-02",
+      "domestic": 375258,
+      "international": 69660,
+      "total": 444918
+    },
+    {
+      "month": "2020-03",
+      "domestic": 264470,
+      "international": 38450,
+      "total": 302920
+    },
+    {
+      "month": "2020-04",
+      "domestic": 1518,
+      "international": 0,
+      "total": 1518
+    },
+    {
+      "month": "2020-05",
+      "domestic": 2297,
+      "international": 0,
+      "total": 2297
+    },
+    {
+      "month": "2020-06",
+      "domestic": 5089,
+      "international": 0,
+      "total": 5089
+    },
+    {
+      "month": "2020-07",
+      "domestic": 41646,
+      "international": 0,
+      "total": 41646
+    },
+    {
+      "month": "2020-08",
+      "domestic": 9711,
+      "international": 0,
+      "total": 9711
+    },
+    {
+      "month": "2020-09",
+      "domestic": 20092,
+      "international": 284,
+      "total": 20376
+    },
+    {
+      "month": "2020-10",
+      "domestic": 31442,
+      "international": 0,
+      "total": 31442
+    },
+    {
+      "month": "2020-11",
+      "domestic": 36255,
+      "international": 0,
+      "total": 36255
+    },
+    {
+      "month": "2020-12",
+      "domestic": 188100,
+      "international": 0,
+      "total": 188100
+    },
+    {
+      "month": "2021-01",
+      "domestic": 192996,
+      "international": 0,
+      "total": 192996
+    },
+    {
+      "month": "2021-02",
+      "domestic": 159926,
+      "international": 0,
+      "total": 159926
+    },
+    {
+      "month": "2021-03",
+      "domestic": 281139,
+      "international": 0,
+      "total": 281139
+    },
+    {
+      "month": "2021-04",
+      "domestic": 397454,
+      "international": 4400,
+      "total": 401854
+    },
+    {
+      "month": "2021-05",
+      "domestic": 371607,
+      "international": 14267,
+      "total": 385874
+    },
+    {
+      "month": "2021-06",
+      "domestic": 236619,
+      "international": 15934,
+      "total": 252553
+    },
+    {
+      "month": "2021-07",
+      "domestic": 95441,
+      "international": 9643,
+      "total": 105084
+    },
+    {
+      "month": "2021-08",
+      "domestic": 12485,
+      "international": 0,
+      "total": 12485
+    },
+    {
+      "month": "2021-09",
+      "domestic": 25000,
+      "international": 0,
+      "total": 25000
+    },
+    {
+      "month": "2021-10",
+      "domestic": 25935,
+      "international": 0,
+      "total": 25935
+    },
+    {
+      "month": "2021-11",
+      "domestic": 35329,
+      "international": 0,
+      "total": 35329
+    },
+    {
+      "month": "2021-12",
+      "domestic": 204881,
+      "international": 0,
+      "total": 204881
+    },
+    {
+      "month": "2022-01",
+      "domestic": 385525,
+      "international": 0,
+      "total": 385525
+    },
+    {
+      "month": "2022-02",
+      "domestic": 303028,
+      "international": 425,
+      "total": 303453
+    },
+    {
+      "month": "2022-03",
+      "domestic": 396214,
+      "international": 6014,
+      "total": 402228
+    },
+    {
+      "month": "2022-04",
+      "domestic": 539895,
+      "international": 15755,
+      "total": 555650
+    },
+    {
+      "month": "2022-05",
+      "domestic": 438563,
+      "international": 18220,
+      "total": 456783
+    },
+    {
+      "month": "2022-06",
+      "domestic": 452253,
+      "international": 31595,
+      "total": 483848
+    },
+    {
+      "month": "2022-07",
+      "domestic": 489625,
+      "international": 48862,
+      "total": 538487
+    },
+    {
+      "month": "2022-08",
+      "domestic": 434740,
+      "international": 50579,
+      "total": 485319
+    },
+    {
+      "month": "2022-09",
+      "domestic": 459905,
+      "international": 52545,
+      "total": 512450
+    },
+    {
+      "month": "2022-10",
+      "domestic": 474963,
+      "international": 54199,
+      "total": 529162
+    },
+    {
+      "month": "2022-11",
+      "domestic": 464351,
+      "international": 57386,
+      "total": 521737
+    },
+    {
+      "month": "2022-12",
+      "domestic": 478433,
+      "international": 55612,
+      "total": 534045
+    },
+    {
+      "month": "2023-01",
+      "domestic": 510576,
+      "international": 61022,
+      "total": 571598
+    },
+    {
+      "month": "2023-02",
+      "domestic": 375507,
+      "international": 55027,
+      "total": 430534
+    },
+    {
+      "month": "2023-03",
+      "domestic": 424902,
+      "international": 61146,
+      "total": 486048
+    },
+    {
+      "month": "2023-04",
+      "domestic": 458284,
+      "international": 75919,
+      "total": 534203
+    },
+    {
+      "month": "2023-05",
+      "domestic": 411060,
+      "international": 63833,
+      "total": 474893
+    },
+    {
+      "month": "2023-06",
+      "domestic": 411049,
+      "international": 72563,
+      "total": 483612
+    },
+    {
+      "month": "2023-07",
+      "domestic": 480236,
+      "international": 80446,
+      "total": 560682
+    },
+    {
+      "month": "2023-08",
+      "domestic": 439125,
+      "international": 67210,
+      "total": 506335
+    },
+    {
+      "month": "2023-09",
+      "domestic": 480854,
+      "international": 74203,
+      "total": 555057
+    },
+    {
+      "month": "2023-10",
+      "domestic": 486705,
+      "international": 69961,
+      "total": 556666
+    },
+    {
+      "month": "2023-11",
+      "domestic": 460985,
+      "international": 51927,
+      "total": 512912
+    },
+    {
+      "month": "2023-12",
+      "domestic": 500263,
+      "international": 57367,
+      "total": 557630
+    },
+    {
+      "month": "2024-01",
+      "domestic": 533893,
+      "international": 62317,
+      "total": 596210
+    },
+    {
+      "month": "2024-02",
+      "domestic": 426795,
+      "international": 45473,
+      "total": 472268
+    },
+    {
+      "month": "2024-03",
+      "domestic": 479276,
+      "international": 47721,
+      "total": 526997
+    },
+    {
+      "month": "2024-04",
+      "domestic": 491105,
+      "international": 56721,
+      "total": 547826
+    },
+    {
+      "month": "2024-05",
+      "domestic": 417027,
+      "international": 44634,
+      "total": 461661
+    },
+    {
+      "month": "2024-06",
+      "domestic": 417518,
+      "international": 50124,
+      "total": 467642
+    },
+    {
+      "month": "2024-07",
+      "domestic": 487660,
+      "international": 60057,
+      "total": 547717
+    },
+    {
+      "month": "2024-08",
+      "domestic": 432058,
+      "international": 51516,
+      "total": 483574
+    },
+    {
+      "month": "2024-09",
+      "domestic": 455489,
+      "international": 55575,
+      "total": 511064
+    },
+    {
+      "month": "2024-10",
+      "domestic": 491963,
+      "international": 54936,
+      "total": 546899
+    },
+    {
+      "month": "2024-11",
+      "domestic": 436452,
+      "international": 41691,
+      "total": 478143
+    },
+    {
+      "month": "2024-12",
+      "domestic": 508646,
+      "international": 57569,
+      "total": 566215
+    },
+    {
+      "month": "2025-01",
+      "domestic": 553696,
+      "international": 67976,
+      "total": 621672
+    },
+    {
+      "month": "2025-02",
+      "domestic": 380446,
+      "international": 38697,
+      "total": 419143
+    },
+    {
+      "month": "2025-03",
+      "domestic": 343443,
+      "international": 37362,
+      "total": 380805
+    },
+    {
+      "month": "2025-04",
+      "domestic": 468511,
+      "international": 61272,
+      "total": 529783
+    },
+    {
+      "month": "2025-05",
+      "domestic": 411956,
+      "international": 45676,
+      "total": 457632
+    },
+    {
+      "month": "2025-06",
+      "domestic": 403690,
+      "international": 51943,
+      "total": 455633
+    },
+    {
+      "month": "2025-07",
+      "domestic": 502568,
+      "international": 72066,
+      "total": 574634
+    },
+    {
+      "month": "2025-08",
+      "domestic": 442388,
+      "international": 63152,
+      "total": 505540
+    },
+    {
+      "month": "2025-09",
+      "domestic": 482267,
+      "international": 77980,
+      "total": 560247
+    },
+    {
+      "month": "2025-10",
+      "domestic": 516301,
+      "international": 72261,
+      "total": 588562
+    },
+    {
+      "month": "2025-11",
+      "domestic": 467662,
+      "international": 55173,
+      "total": 522835
+    },
+    {
+      "month": "2025-12",
+      "domestic": 526956,
+      "international": 71205,
+      "total": 598161
+    },
+    {
+      "month": "2026-01",
+      "domestic": 558818,
+      "international": 78889,
+      "total": 637707
+    },
+    {
+      "month": "2026-02",
+      "domestic": 403435,
+      "international": 45914,
+      "total": 449349
+    },
+    {
+      "month": "2026-03",
+      "domestic": 455965,
+      "international": 56878,
+      "total": 512843
+    },
+    {
+      "month": "2026-04",
+      "domestic": 498641,
+      "international": 72498,
+      "total": 571139
+    },
+    {
+      "month": "2026-05",
+      "domestic": 415989,
+      "international": 55572,
+      "total": 471561
+    },
+    {
+      "month": "2026-06",
+      "domestic": 404106,
+      "international": 57303,
+      "total": 461409
+    }
+  ],
+  "forecast": [
+    {
+      "month": "2026-07",
+      "months_ahead": 1,
+      "domestic": {
+        "forecast": 500506,
+        "low": 472336,
+        "high": 528676
+      },
+      "international": {
+        "forecast": 74301,
+        "low": 60985,
+        "high": 87618
+      },
+      "total": {
+        "forecast": 574807,
+        "low": 539427,
+        "high": 610187
+      }
+    },
+    {
+      "month": "2026-08",
+      "months_ahead": 2,
+      "domestic": {
+        "forecast": 446282,
+        "low": 421164,
+        "high": 471401
+      },
+      "international": {
+        "forecast": 64433,
+        "low": 52885,
+        "high": 75981
+      },
+      "total": {
+        "forecast": 510715,
+        "low": 479280,
+        "high": 542150
+      }
+    },
+    {
+      "month": "2026-09",
+      "months_ahead": 3,
+      "domestic": {
+        "forecast": 479179,
+        "low": 452209,
+        "high": 506149
+      },
+      "international": {
+        "forecast": 69710,
+        "low": 57217,
+        "high": 82203
+      },
+      "total": {
+        "forecast": 548889,
+        "low": 515104,
+        "high": 582674
+      }
+    },
+    {
+      "month": "2026-10",
+      "months_ahead": 4,
+      "domestic": {
+        "forecast": 502225,
+        "low": 473921,
+        "high": 530530
+      },
+      "international": {
+        "forecast": 66305,
+        "low": 48285,
+        "high": 84325
+      },
+      "total": {
+        "forecast": 568530,
+        "low": 525274,
+        "high": 611786
+      }
+    },
+    {
+      "month": "2026-11",
+      "months_ahead": 5,
+      "domestic": {
+        "forecast": 466266,
+        "low": 439988,
+        "high": 492544
+      },
+      "international": {
+        "forecast": 53586,
+        "low": 39023,
+        "high": 68150
+      },
+      "total": {
+        "forecast": 519852,
+        "low": 480300,
+        "high": 559405
+      }
+    },
+    {
+      "month": "2026-12",
+      "months_ahead": 6,
+      "domestic": {
+        "forecast": 513056,
+        "low": 484142,
+        "high": 541971
+      },
+      "international": {
+        "forecast": 62201,
+        "low": 45296,
+        "high": 79106
+      },
+      "total": {
+        "forecast": 575257,
+        "low": 531490,
+        "high": 619025
+      }
+    },
+    {
+      "month": "2027-01",
+      "months_ahead": 7,
+      "domestic": {
+        "forecast": 549175,
+        "low": 518067,
+        "high": 580284
+      },
+      "international": {
+        "forecast": 68863,
+        "low": 48118,
+        "high": 89607
+      },
+      "total": {
+        "forecast": 618038,
+        "low": 564756,
+        "high": 671320
+      }
+    },
+    {
+      "month": "2027-02",
+      "months_ahead": 8,
+      "domestic": {
+        "forecast": 403422,
+        "low": 380569,
+        "high": 426274
+      },
+      "international": {
+        "forecast": 46735,
+        "low": 32656,
+        "high": 60813
+      },
+      "total": {
+        "forecast": 450156,
+        "low": 411348,
+        "high": 488965
+      }
+    },
+    {
+      "month": "2027-03",
+      "months_ahead": 9,
+      "domestic": {
+        "forecast": 430315,
+        "low": 405940,
+        "high": 454691
+      },
+      "international": {
+        "forecast": 50544,
+        "low": 35318,
+        "high": 65770
+      },
+      "total": {
+        "forecast": 480859,
+        "low": 439403,
+        "high": 522315
+      }
+    },
+    {
+      "month": "2027-04",
+      "months_ahead": 10,
+      "domestic": {
+        "forecast": 487437,
+        "low": 462435,
+        "high": 512439
+      },
+      "international": {
+        "forecast": 66768,
+        "low": 48319,
+        "high": 85217
+      },
+      "total": {
+        "forecast": 554205,
+        "low": 512777,
+        "high": 595634
+      }
+    }
+  ],
+  "accuracy": {
+    "test_start": "2025-07",
+    "test_end": "2026-06",
+    "method": "rolling origin: each of the last 12 months was forecast 1 to 12 months ahead, using only data available at the time",
+    "forecasts_per_series": 144,
+    "error_measure": "average % difference between forecast and actual",
+    "series": {
+      "total": {
+        "model_error_1_6": 4.7,
+        "model_error_7_12": 4.9,
+        "baseline_error_1_6": 7.1,
+        "baseline_error_7_12": 7.1,
+        "model_mean_error": -3.8,
+        "model_below_actual_pct": 80.0,
+        "model_beats_baseline": {
+          "1_6": true,
+          "7_12": true
+        }
+      },
+      "domestic": {
+        "model_error_1_6": 3.9,
+        "model_error_7_12": 3.5,
+        "baseline_error_1_6": 5.3,
+        "baseline_error_7_12": 5.3,
+        "model_mean_error": -3.2,
+        "model_below_actual_pct": 86.0,
+        "model_beats_baseline": {
+          "1_6": true,
+          "7_12": true
+        }
+      },
+      "international": {
+        "model_error_1_6": 14.3,
+        "model_error_7_12": 19.0,
+        "baseline_error_1_6": 19.8,
+        "baseline_error_7_12": 19.8,
+        "model_mean_error": -7.6,
+        "model_below_actual_pct": 67.0,
+        "model_beats_baseline": {
+          "1_6": true,
+          "7_12": true
+        }
+      }
+    },
+    "candidates": [
+      {
+        "series": "domestic",
+        "candidate": "same_month_last_year",
+        "description": "same month last year",
+        "error_1_6": 5.3,
+        "error_7_12": 5.3,
+        "error_all": 5.3,
+        "chosen": false
+      },
+      {
+        "series": "domestic",
+        "candidate": "ets_recent",
+        "description": "exponential smoothing (ETS) with a damped trend and a monthly seasonal pattern, on log passengers, trained on July 2022 onward (after COVID recovery)",
+        "error_1_6": 3.9,
+        "error_7_12": 3.5,
+        "error_all": 3.7,
+        "chosen": true
+      },
+      {
+        "series": "domestic",
+        "candidate": "ets_long",
+        "description": "exponential smoothing (ETS) with a damped trend and a monthly seasonal pattern, on log passengers, trained on 2009 onward with the COVID months removed",
+        "error_1_6": 4.4,
+        "error_7_12": 5.4,
+        "error_all": 4.9,
+        "chosen": false
+      },
+      {
+        "series": "domestic",
+        "candidate": "sarima_recent",
+        "description": "seasonal ARIMA (0,1,1)(0,1,1)12, the 'airline model', on log passengers, trained on July 2022 onward (after COVID recovery)",
+        "error_1_6": 6.4,
+        "error_7_12": 8.9,
+        "error_all": 7.6,
+        "chosen": false
+      },
+      {
+        "series": "domestic",
+        "candidate": "sarima_long",
+        "description": "seasonal ARIMA (0,1,1)(0,1,1)12, the 'airline model', on log passengers, trained on 2009 onward with the COVID months removed",
+        "error_1_6": 4.9,
+        "error_7_12": 6.2,
+        "error_all": 5.6,
+        "chosen": false
+      },
+      {
+        "series": "international",
+        "candidate": "same_month_last_year",
+        "description": "same month last year",
+        "error_1_6": 19.8,
+        "error_7_12": 19.8,
+        "error_all": 19.8,
+        "chosen": false
+      },
+      {
+        "series": "international",
+        "candidate": "ets_recent",
+        "description": "exponential smoothing (ETS) with a damped trend and a monthly seasonal pattern, on log passengers, trained on July 2022 onward (after COVID recovery)",
+        "error_1_6": 14.3,
+        "error_7_12": 19.0,
+        "error_all": 16.6,
+        "chosen": true
+      },
+      {
+        "series": "international",
+        "candidate": "ets_long",
+        "description": "exponential smoothing (ETS) with a damped trend and a monthly seasonal pattern, on log passengers, trained on 2009 onward with the COVID months removed",
+        "error_1_6": 14.5,
+        "error_7_12": 19.9,
+        "error_all": 17.2,
+        "chosen": false
+      },
+      {
+        "series": "international",
+        "candidate": "sarima_recent",
+        "description": "seasonal ARIMA (0,1,1)(0,1,1)12, the 'airline model', on log passengers, trained on July 2022 onward (after COVID recovery)",
+        "error_1_6": 15.0,
+        "error_7_12": 20.9,
+        "error_all": 18.0,
+        "chosen": false
+      },
+      {
+        "series": "international",
+        "candidate": "sarima_long",
+        "description": "seasonal ARIMA (0,1,1)(0,1,1)12, the 'airline model', on log passengers, trained on 2009 onward with the COVID months removed",
+        "error_1_6": 12.8,
+        "error_7_12": 25.7,
+        "error_all": 19.3,
+        "chosen": false
+      }
+    ],
+    "selection_note": "The method for each series was chosen as the one with the lowest average error over these same 12 months, so real-world accuracy may be slightly worse."
+  },
+  "scenario": {
+    "formula": "extra monthly passengers = weekly return flights × 2 × seats per flight × load factor × weeks per month",
+    "weeks_per_month": 4.3482,
+    "domestic": {
+      "load_factor": 0.898,
+      "seats_per_flight": 181,
+      "period_start": "2025-08",
+      "period_end": "2026-07",
+      "basis": "Gold Coast domestic routes reported by BITRE (OOL-ADL, OOL-CBR, OOL-MEL, OOL-SYD): passengers ÷ seats and seats ÷ flights",
+      "source": "domestic_routes"
+    },
+    "international": {
+      "load_factor": 0.854,
+      "seats_per_flight": 190,
+      "period_start": "2025-07",
+      "period_end": "2026-06",
+      "basis": "Gold Coast international passengers (airport traffic) ÷ international seats operated; seats ÷ flights",
+      "source": "international_seats"
+    }
+  },
+  "sources": [
+    {
+      "key": "airport_traffic",
+      "title": "Airport traffic data: monthly, top 20 airports",
+      "page_url": "https://www.bitre.gov.au/resource/aviation/airport-traffic-data",
+      "file_url": "https://www.bitre.gov.au/sites/default/files/documents/Aviation-Airport%20Traffic%20Data-June%202026.xlsx",
+      "covers_to": "2026-06",
+      "retrieved_at": "2026-10-27T07:58:32+00:00",
+      "sha256": "9a5ec82c1685e0f434dcbdec66047b1c0049de014984ff2d54091384d6d92632"
+    },
+    {
+      "key": "domestic_routes",
+      "title": "Australian domestic aviation activity: top routes",
+      "page_url": "https://www.bitre.gov.au/resource/aviation/australian-domestic-aviation-activity-time-series",
+      "file_url": "https://www.bitre.gov.au/sites/default/files/documents/toproutesjuly2014july2026.xlsx",
+      "covers_to": "2026-07",
+      "retrieved_at": "2026-10-27T07:58:32+00:00",
+      "sha256": "2bb013e3a1d8b427a54193bcb86025440c4cbae9ea90bc102b0f52974a9a0f66"
+    },
+    {
+      "key": "international_seats",
+      "title": "International airline activity: operated flights and seats",
+      "page_url": "https://www.bitre.gov.au/resource/aviation/international-airline-activity-time-series-data",
+      "file_url": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_OpFltsSeats_0726_Tables.xlsx",
+      "covers_to": "2026-07",
+      "retrieved_at": "2026-10-27T07:58:32+00:00",
+      "sha256": "9e8d6e73e42ebcf4e7b06d29eebac6505d5aa02a9e52e247ccb55755294abd7f"
+    }
+  ],
+  "attribution": "Source: Bureau of Infrastructure and Transport Research Economics (BITRE), © Commonwealth of Australia, CC BY 4.0.",
+  "repository": "https://github.com/CharlieRego/gold-coast-air-demand"
+}

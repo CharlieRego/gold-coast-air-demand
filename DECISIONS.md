@@ -30,11 +30,6 @@ Each entry: date, the options, the choice, and why.
 - **Options:** statsforecast (fast, but pulls in numba) or statsmodels (ETS and SARIMA, lighter, widely known).
 - **Choice:** statsmodels, plus pandas and openpyxl. Add statsforecast only if the backtest shows a model it has that statsmodels lacks.
 
-## 2026-10-27 · How to handle COVID (2020–22) — to decide on 29 Oct with evidence
-- Gold Coast passengers fell to almost zero in April 2020. Domestic traffic dipped with each lockdown until about January 2022. International stayed near zero until early 2022 and had largely recovered by mid-2022.
-- **Options to test in the backtest:** (1) train from Jul 2022 only (48 months; the earliest backtest fold has 36); (2) use 2009–Feb 2020 plus Jul 2022 onward, with a level shift for the post-COVID period; (3) model domestic and international separately with different start dates.
-- The choice will be based on rolling-origin backtest error against the "same month last year" baseline.
-
 ## 2026-10-27 · Refresh schedule
 - **Options:** monthly (as first planned), weekly, or every 14 days.
 - **Choice:** every 14 days, Wednesday 03:00 Brisbane time, plus a manual trigger. GitHub Actions cron can't express "every 14 days", so the workflow runs weekly and skips odd ISO weeks.
@@ -45,3 +40,30 @@ Each entry: date, the options, the choice, and why.
 - **Options:** (a) treat them as zero; (b) keep them empty, with a `status` column saying why; (c) drop the rows.
 - **Choice:** (b). Any other text in a number cell stops the pipeline.
 - **Why:** "Suppressed" isn't zero, and turning text into numbers would mean inventing data. Keeping the rows shows the gaps honestly. The model doesn't use these files; they only supply load factors and seat counts from recent, complete months.
+
+## 2026-11-01 · How to handle COVID, and which model
+- **What the data showed:** Gold Coast domestic passengers were back to 2019 levels by about March 2022. International took until about April 2023, then fell 20% in 2024 and grew 14% in 2025.
+- **Options tested:** two models (ETS exponential smoothing with a damped trend, and the seasonal ARIMA "airline model"), both on log passenger numbers, each trained two ways: (1) *recent*: July 2022 onward only; (2) *long*: 2009 onward with the COVID months cut out. The cut is exactly 24 months for domestic (Mar 2020 – Feb 2022) and 36 months for international (Mar 2020 – Feb 2023), so the months still line up for the seasonal pattern. Domestic and international are forecast separately and added up for the total.
+- **Test:** rolling origin over the last 12 months (Jul 2025 – Jun 2026). Every month was forecast 1 to 12 months ahead using only data available at the time. Baseline: same month last year.
+- **Results (average % error, 1–6 / 7–12 months ahead):**
+
+  | | ETS recent | ETS long | SARIMA recent | SARIMA long | Same month last year |
+  |---|---|---|---|---|---|
+  | Domestic | **3.9 / 3.5** | 4.4 / 5.4 | 6.4 / 8.9 | 4.9 / 6.2 | 5.3 / 5.3 |
+  | International | **14.3 / 19.0** | 14.5 / 19.9 | 15.0 / 21.0 | 12.8 / 25.7 | 19.8 / 19.8 |
+  | Total (domestic + international) | **4.7 / 4.9** | | | | 7.1 / 7.1 |
+
+- **Rule and choice:** for each series, the method with the lowest average error over horizons 1–12. ETS on recent data won for both. Forecasting domestic and international separately and adding them beat a direct model of the total (5.5 / 7.2 for ETS long on the total).
+- **Caveat:** the method was chosen on the same 12 months it is scored on, so real accuracy may be a little worse. The page says so. With only four years of post-COVID data there wasn't room for a separate test year.
+- **Not used:** statsforecast. statsmodels covered both models.
+
+## 2026-11-01 · Likely ranges
+- **Options:** (a) the model's own simulated 80% ranges; (b) the 10th–90th percentile of the backtest's signed errors; (c) forecast ± the absolute % error that 8 in 10 backtest forecasts at a similar distance ahead (1–3, 4–6, 7–9, 10–12 months) stayed within.
+- **Choice:** (c).
+- **Why:** (a) was too narrow: in the backtest, ETS's 80% ranges caught the actual figure only 32–75% of the time, depending on the series and distance ahead. (b) failed a sanity check: domestic forecasts 4–6 months ahead ran low in every test case, so the whole range sat above the forecast. (c) is easy to explain ("this is how far off the method has recently been, this far ahead") and always contains the forecast. The six-month headline range adds up the monthly ranges, which is cautious because it assumes a month that runs high is followed by others that also run high.
+
+## 2026-11-01 · The forecast runs low, and I'm saying so instead of correcting it
+- **Finding:** over the test year the chosen method came in below the actual figure in 80% of forecasts, by 3.8% on average for the total (domestic 3.2%, international 7.6%). Early numbers for July 2026, the month after the latest airport data, back this up for international: seats on international flights were up 13.6% on July 2025, while the model forecast international passengers up 3%. Domestic route passengers were up 0.4%, in line with the model's flat forecast.
+- **Options:** (a) shift the forecast up by the backtest bias; (b) leave it and say so.
+- **Choice:** (b). The page shows a "treat this as a cautious estimate" line, generated from the backtest, and the July early numbers next to the forecast.
+- **Why:** correcting with the same 12 months used to score the model would make the accuracy figures look better than they are. The bias is reported as measured.
