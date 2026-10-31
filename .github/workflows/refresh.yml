@@ -1,0 +1,84 @@
+name: Refresh forecast
+
+# Every second Wednesday at 03:00 Brisbane time (Tuesday 17:00 UTC; Queensland has no
+# daylight saving). Cron can't say "every 14 days", so this runs weekly and skips odd ISO weeks.
+on:
+  schedule:
+    - cron: "0 17 * * 2"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Skip odd weeks (scheduled runs only)
+        id: gate
+        run: |
+          week=$(TZ=Australia/Brisbane date +%V)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ $((10#$week % 2)) -ne 0 ]; then
+            echo "ISO week $week is odd: skipping this week."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.run == 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        if: steps.gate.outputs.run == 'true'
+        run: pip install -r requirements.txt
+
+      # Downloads the latest BITRE files, runs the data checks (any failure stops here),
+      # backtests, forecasts and validates forecast.json against its schema
+      - name: Run pipeline
+        if: steps.gate.outputs.run == 'true'
+        run: python -m src.pipeline
+
+      - name: Tests
+        if: steps.gate.outputs.run == 'true'
+        run: python -m pytest -q
+
+      # Commit only when something meaningful changed: new data, or a new forecast period.
+      # The run timestamps alone don't count.
+      - name: Anything new?
+        if: steps.gate.outputs.run == 'true'
+        id: diff
+        run: |
+          python - <<'EOF'
+          import json, os, subprocess
+          new = json.load(open("output/forecast.json", encoding="utf-8"))
+          try:
+              old = json.loads(subprocess.check_output(["git", "show", "HEAD:output/forecast.json"]))
+          except subprocess.CalledProcessError:
+              old = {}
+          strip = lambda d: {k: v for k, v in d.items() if k not in ("generated_at", "run_date")}
+          changed = strip(new) != strip(old)
+          print("forecast changed" if changed else "no meaningful change")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"changed={'true' if changed else 'false'}\n")
+          EOF
+
+      - name: Commit
+        if: steps.gate.outputs.run == 'true' && steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output/ data/processed/ data/raw/
+          latest=$(python -c "import json;print(json.load(open('output/forecast.json'))['latest_data_month'])")
+          git commit -m "data: refresh forecast (BITRE data to $latest)"
+          git push

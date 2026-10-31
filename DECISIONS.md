@@ -67,3 +67,8 @@ Each entry: date, the options, the choice, and why.
 - **Options:** (a) shift the forecast up by the backtest bias; (b) leave it and say so.
 - **Choice:** (b). The page shows a "treat this as a cautious estimate" line, generated from the backtest, and the July early numbers next to the forecast.
 - **Why:** correcting with the same 12 months used to score the model would make the accuracy figures look better than they are. The bias is reported as measured.
+
+## 2026-11-01 · Chart library for the web page
+- **Options:** Recharts (as first planned) or a small hand-drawn SVG chart.
+- **Choice:** hand-drawn SVG in one React component.
+- **Why:** the page is opened from a QR code on phones over mobile data. The chart only needs one line, a dashed forecast, a shaded range, a highlighted six-month window and a hover/touch readout, which is about 250 lines of SVG. That adds no dependency and keeps the JavaScript small. It also has keyboard arrow-key reading and a table view, so it doesn't rely on hover alone.
