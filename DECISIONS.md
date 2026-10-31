@@ -72,3 +72,9 @@ Each entry: date, the options, the choice, and why.
 - **Options:** Recharts (as first planned) or a small hand-drawn SVG chart.
 - **Choice:** hand-drawn SVG in one React component.
 - **Why:** the page is opened from a QR code on phones over mobile data. The chart only needs one line, a dashed forecast, a shaded range, a highlighted six-month window and a hover/touch readout, which is about 250 lines of SVG. That adds no dependency and keeps the JavaScript small. It also has keyboard arrow-key reading and a table view, so it doesn't rely on hover alone.
+
+## 2026-11-01 · Refresh runs on an Australian server, not GitHub Actions
+- **Problem:** the first manual run of the GitHub Actions refresh failed: BITRE's site timed out. A probe from a GitHub runner (Iowa, Microsoft network) showed that both bitre.gov.au and infrastructure.gov.au refuse the connection immediately, whatever the user agent. data.qld.gov.au answered normally. From my Sydney VPS, BITRE answers.
+- **Options:** (a) a proxy for GitHub Actions; (b) refresh by hand from my PC; (c) run the refresh on my Sydney VPS and push the result to GitHub.
+- **Choice:** (c). `scripts/refresh.sh` runs from cron every Wednesday at 03:00 Brisbane time and skips odd ISO weeks, so it runs every 14 days. Wednesday stays clear of the VPS's Monday job. It pushes with a deploy key that can write to this repository only, and commits only if the forecast changed. The GitHub Actions workflow now runs the tests on every push, including the refresh commits, so a bad file is flagged where anyone can see it.
+- **Why:** it keeps the refresh automatic without paying for anything, and a single-repo deploy key limits what the server can touch.
