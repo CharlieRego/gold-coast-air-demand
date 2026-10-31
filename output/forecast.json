@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-31T17:43:42+00:00",
+  "generated_at": "2026-10-31T18:26:33+00:00",
   "run_date": "2026-11-01",
   "unit": "passenger movements (arrivals plus departures), scheduled flights only",
   "latest_data_month": "2026-06",
@@ -14,16 +14,16 @@
     "previous_period_start": "2025-11",
     "previous_period_end": "2026-04",
     "total": {
-      "forecast": 3198368,
-      "low": 2940072,
-      "high": 3456663,
+      "forecast": 3198341,
+      "low": 2940057,
+      "high": 3456625,
       "previous_actual": 3292034,
       "change_pct": -2.8
     },
     "domestic": {
-      "forecast": 2849672,
-      "low": 2691141,
-      "high": 3008202,
+      "forecast": 2849645,
+      "low": 2691126,
+      "high": 3008163,
       "previous_actual": 2911477,
       "change_pct": -2.1
     },
@@ -645,9 +645,9 @@
       "month": "2026-07",
       "months_ahead": 1,
       "domestic": {
-        "forecast": 500506,
-        "low": 472336,
-        "high": 528676
+        "forecast": 500501,
+        "low": 472328,
+        "high": 528675
       },
       "international": {
         "forecast": 74301,
@@ -655,27 +655,27 @@
         "high": 87618
       },
       "total": {
-        "forecast": 574807,
-        "low": 539427,
-        "high": 610187
+        "forecast": 574803,
+        "low": 539425,
+        "high": 610180
       }
     },
     {
       "month": "2026-08",
       "months_ahead": 2,
       "domestic": {
-        "forecast": 446282,
-        "low": 421164,
-        "high": 471401
+        "forecast": 446283,
+        "low": 421162,
+        "high": 471405
       },
       "international": {
         "forecast": 64433,
         "low": 52885,
-        "high": 75981
+        "high": 75980
       },
       "total": {
-        "forecast": 510715,
-        "low": 479280,
+        "forecast": 510716,
+        "low": 479283,
         "high": 542150
       }
     },
@@ -683,9 +683,9 @@
       "month": "2026-09",
       "months_ahead": 3,
       "domestic": {
-        "forecast": 479179,
-        "low": 452209,
-        "high": 506149
+        "forecast": 479187,
+        "low": 452213,
+        "high": 506160
       },
       "international": {
         "forecast": 69710,
@@ -693,18 +693,18 @@
         "high": 82203
       },
       "total": {
-        "forecast": 548889,
-        "low": 515104,
-        "high": 582674
+        "forecast": 548897,
+        "low": 515113,
+        "high": 582680
       }
     },
     {
       "month": "2026-10",
       "months_ahead": 4,
       "domestic": {
-        "forecast": 502225,
-        "low": 473921,
-        "high": 530530
+        "forecast": 502224,
+        "low": 473922,
+        "high": 530526
       },
       "international": {
         "forecast": 66305,
@@ -712,9 +712,9 @@
         "high": 84325
       },
       "total": {
-        "forecast": 568530,
-        "low": 525274,
-        "high": 611786
+        "forecast": 568529,
+        "low": 525275,
+        "high": 611783
       }
     },
     {
@@ -722,27 +722,27 @@
       "months_ahead": 5,
       "domestic": {
         "forecast": 466266,
-        "low": 439988,
-        "high": 492544
+        "low": 439990,
+        "high": 492541
       },
       "international": {
         "forecast": 53586,
         "low": 39023,
-        "high": 68150
+        "high": 68149
       },
       "total": {
         "forecast": 519852,
-        "low": 480300,
-        "high": 559405
+        "low": 480301,
+        "high": 559402
       }
     },
     {
       "month": "2026-12",
       "months_ahead": 6,
       "domestic": {
-        "forecast": 513056,
-        "low": 484142,
-        "high": 541971
+        "forecast": 513060,
+        "low": 484147,
+        "high": 541973
       },
       "international": {
         "forecast": 62201,
@@ -750,37 +750,37 @@
         "high": 79106
       },
       "total": {
-        "forecast": 575257,
-        "low": 531490,
-        "high": 619025
+        "forecast": 575261,
+        "low": 531495,
+        "high": 619027
       }
     },
     {
       "month": "2027-01",
       "months_ahead": 7,
       "domestic": {
-        "forecast": 549175,
-        "low": 518067,
-        "high": 580284
+        "forecast": 549164,
+        "low": 518059,
+        "high": 580270
       },
       "international": {
-        "forecast": 68863,
+        "forecast": 68862,
         "low": 48118,
         "high": 89607
       },
       "total": {
-        "forecast": 618038,
-        "low": 564756,
-        "high": 671320
+        "forecast": 618027,
+        "low": 564748,
+        "high": 671305
       }
     },
     {
       "month": "2027-02",
       "months_ahead": 8,
       "domestic": {
-        "forecast": 403422,
+        "forecast": 403420,
         "low": 380569,
-        "high": 426274
+        "high": 426270
       },
       "international": {
         "forecast": 46735,
@@ -788,18 +788,18 @@
         "high": 60813
       },
       "total": {
-        "forecast": 450156,
-        "low": 411348,
-        "high": 488965
+        "forecast": 450154,
+        "low": 411347,
+        "high": 488961
       }
     },
     {
       "month": "2027-03",
       "months_ahead": 9,
       "domestic": {
-        "forecast": 430315,
-        "low": 405940,
-        "high": 454691
+        "forecast": 430313,
+        "low": 405939,
+        "high": 454686
       },
       "international": {
         "forecast": 50544,
@@ -807,18 +807,18 @@
         "high": 65770
       },
       "total": {
-        "forecast": 480859,
+        "forecast": 480857,
         "low": 439403,
-        "high": 522315
+        "high": 522310
       }
     },
     {
       "month": "2027-04",
       "months_ahead": 10,
       "domestic": {
-        "forecast": 487437,
-        "low": 462435,
-        "high": 512439
+        "forecast": 487423,
+        "low": 462422,
+        "high": 512424
       },
       "international": {
         "forecast": 66768,
@@ -826,9 +826,9 @@
         "high": 85217
       },
       "total": {
-        "forecast": 554205,
-        "low": 512777,
-        "high": 595634
+        "forecast": 554191,
+        "low": 512762,
+        "high": 595619
       }
     }
   ],
@@ -845,7 +845,7 @@
         "baseline_error_1_6": 7.1,
         "baseline_error_7_12": 7.1,
         "model_mean_error": -3.8,
-        "model_below_actual_pct": 80.0,
+        "model_below_actual_pct": 79.0,
         "model_beats_baseline": {
           "1_6": true,
           "7_12": true
@@ -908,7 +908,7 @@
         "series": "domestic",
         "candidate": "sarima_recent",
         "description": "seasonal ARIMA (0,1,1)(0,1,1)12, the 'airline model', on log passengers, trained on July 2022 onward (after COVID recovery)",
-        "error_1_6": 6.4,
+        "error_1_6": 6.3,
         "error_7_12": 8.9,
         "error_all": 7.6,
         "chosen": false
@@ -964,7 +964,7 @@
         "description": "seasonal ARIMA (0,1,1)(0,1,1)12, the 'airline model', on log passengers, trained on 2009 onward with the COVID months removed",
         "error_1_6": 12.8,
         "error_7_12": 25.7,
-        "error_all": 19.3,
+        "error_all": 19.2,
         "chosen": false
       }
     ],
