@@ -14,6 +14,8 @@ It answers one question for people planning around the Gold Coast's visitor seas
 | Model | `src/model/` | Forecasts domestic and international passengers separately and adds them up. Candidates: ETS and seasonal ARIMA, trained on post-COVID data or on 2009 onward with COVID cut out |
 | Backtest | `src/model/backtest.py` | Rolling origin over the last 12 months, 1–12 months ahead, against "same month last year" |
 | Export | `src/export/` | Writes `output/forecast.json` and checks it against `schema/forecast.schema.json` |
+| Refresh | `scripts/refresh.sh` | Runs every second Wednesday at 03:00 Brisbane time on a Sydney server (BITRE blocks overseas cloud servers, so GitHub Actions can't fetch it). Commits only if the forecast changed |
+| CI | `.github/workflows/checks.yml` | Runs the tests on every push, including the refresh commits |
 
 ## Accuracy (test year Jul 2025 – Jun 2026)
 

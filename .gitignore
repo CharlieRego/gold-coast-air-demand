@@ -27,3 +27,6 @@ Thumbs.db
 
 # Large raw download: only its SHA-256 (data/raw/manifest.json) and extracted rows are kept
 data/raw/International_airline_activity_OpFltsSeats_*_Tables.xlsx
+
+# Refresh logs on the server
+logs/

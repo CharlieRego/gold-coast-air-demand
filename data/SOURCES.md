@@ -66,6 +66,11 @@ Wave columns: Site, SiteNumber, Seconds, DateTime, Latitude, Longitude, Hs (sign
 Tide columns: Site, Seconds, DateTime, Water Level, Prediction, Residual, Latitude, Longitude. 10-minute readings.
 Observed 27 Oct 2026 ~17:20 AEST: latest Gold Coast wave reading was 15:30 (about 2 hours old); latest Gold Coast water level reading was 16:30, with the 16:40 row showing `-99.000` (missing value).
 
+### How the page reads DETSI data
+The page uses the open data portal's filtered `datastore_search` API (sorted by `Seconds`, filtered to `Gold Coast Mk4` and `goldcoast`), about 2 KB a request, fetched on the server at most every 30 minutes. It carries the same readings as the CSV feeds. Missing values are `-99` or `-99.9` and are skipped. The storm tide metadata doesn't state the datum for `Water Level`, so the page shows the reading against DETSI's own predicted tide and doesn't name a datum.
+
+Observed 1 Nov 2026 about 04:00 AEST: the latest Gold Coast wave reading was 30 Oct 19:00, and DETSI's CSV said "Wave Data provided @ 20:30hrs on 30-10-2026", so the source itself was about 31 hours behind. The tide gauge had shown `-99` since 30 Oct 15:10. The page showed "Buoy data delayed – last reading at …", as designed.
+
 ## Not used
 - `International_airline_activity_OpFltsSeats_1225_Tables.xlsx` (Dec 2025 edition) — superseded by the Jul 2026 edition.
 - `International_airline_activity_CityPairs_2009toCurrent_0726.xlsx` — passengers by city pair to Jul 2026. Not needed for the forecast; may be useful later for route-level international load factors.

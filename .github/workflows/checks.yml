@@ -1,0 +1,28 @@
+name: Checks
+
+# The fortnightly refresh runs on an Australian server (scripts/refresh.sh), because
+# BITRE's website refuses connections from GitHub's US-based runners. This workflow
+# checks every push, including the refresh commits: the tests validate the committed
+# forecast.json against its schema and the data files it was built from.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Tests (schema, forecast logic, data checks)
+        run: python -m pytest -q
