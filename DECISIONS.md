@@ -78,3 +78,9 @@ Each entry: date, the options, the choice, and why.
 - **Options:** (a) a proxy for GitHub Actions; (b) refresh by hand from my PC; (c) run the refresh on my Sydney VPS and push the result to GitHub.
 - **Choice:** (c). `scripts/refresh.sh` runs from cron every Wednesday at 03:00 Brisbane time and skips odd ISO weeks, so it runs every 14 days. Wednesday stays clear of the VPS's Monday job. It pushes with a deploy key that can write to this repository only, and commits only if the forecast changed. The GitHub Actions workflow now runs the tests on every push, including the refresh commits, so a bad file is flagged where anyone can see it.
 - **Why:** it keeps the refresh automatic without paying for anything, and a single-repo deploy key limits what the server can touch.
+
+## 2026-11-01 · The README's numbers update themselves
+- **Problem:** the README quoted the forecast and accuracy figures, which would go out of date at the next fortnightly refresh.
+- **Options:** (a) keep the numbers out of the README and link to the page; (b) update them by hand; (c) have the pipeline rewrite them from `forecast.json`.
+- **Choice:** (c). Two blocks in the README sit between marker comments, and `src/export/readme.py` rewrites them on every run. A test fails if the README and `forecast.json` disagree. The badges at the top read `forecast.json` live through shields.io.
+- **Why:** someone opening the repository should see the current forecast and how accurate it has been, not the figures from whenever I last edited the file.

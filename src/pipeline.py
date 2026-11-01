@@ -17,6 +17,7 @@ import pandas as pd
 from src.checks.checks import check_airport, check_intl_seats, check_routes, enforce
 from src.config import OUTPUT_DIR, PROCESSED_DIR, RAW_DIR
 from src.export.export import build_json, write
+from src.export.readme import update as update_readme
 from src.model.backtest import add_total, choose, run_backtest
 from src.model.forecast import build, headline
 from src.ingest.fetch import fetch_all, load_manifest, verify_local
@@ -63,6 +64,7 @@ def run(offline: bool = False, today: str | None = None) -> dict:
     write(doc)  # validates against the schema first
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     bt.to_csv(OUTPUT_DIR / "backtest.csv", index=False, date_format="%Y-%m", lineterminator="\n", float_format="%.1f")
+    update_readme(doc)  # the README's results and accuracy blocks
     print(f"[done] {OUTPUT_DIR / 'forecast.json'}: {doc['headline']['sentence']}")
     return {"doc": doc, "backtest": bt}
 
