@@ -38,7 +38,7 @@ git pull -q --ff-only
 if .venv/bin/python scripts/changed.py; then
   latest=$(.venv/bin/python -c "import json; print(json.load(open('output/forecast.json'))['latest_data_month'])")
   if [[ $PUSH -eq 1 ]]; then
-    git add output/ data/processed/ data/raw/
+    git add output/ data/processed/ data/raw/ README.md
     git commit -q -m "data: refresh forecast (BITRE data to $latest)"
     git push -q
     log "pushed new forecast (data to $latest)"
